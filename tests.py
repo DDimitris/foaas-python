@@ -1,23 +1,19 @@
 import unittest
-from foaas import Fuck
+from foaas import Fuck, FuckingResponse
 
+GLOBAL_URL = "https://foaas.com/"
 
 class FuckingTests(unittest.TestCase):
     def setUp(self):
         self.fuck = Fuck()
 
     def test_url(self):
-        url = self.fuck.off(name='Alice', from_='Bob').url
-        self.assertEqual('http://foaas.herokuapp.com/off/Alice/Bob', url)
-
-    def test_url_secure(self):
-        secure_fuck = Fuck(secure=True)
-        url = secure_fuck.everything(from_='Bob', secure=True).url
-        self.assertEqual('https://foaas.herokuapp.com/everything/Bob', url)
+        url = self.fuck.off(name_='Alice', from_='Bob').url
+        self.assertEqual(GLOBAL_URL + "off/Alice/Bob", url)
 
     def test_url_quoting(self):
-        url = self.fuck.donut(name='Alice!', from_='Bobby McGee').url
-        self.assertEqual('http://foaas.herokuapp.com/donut/Alice%21/Bobby%20McGee', url)
+        url = self.fuck.donut(name_='Alice!', from_='Bobby McGee').url
+        self.assertEqual(GLOBAL_URL + "donut/Alice!/Bobby McGee", url)
 
     def test_html(self):
         html = self.fuck.thanks(from_='Bob').html
@@ -37,10 +33,18 @@ class FuckingTests(unittest.TestCase):
 
     def test_random(self):
         self.fuck.random(from_='Chris')
-        self.fuck.random(name='Tom', from_='Chris')
-        self.fuck.random(name='Alice', from_='Bob', company='Acme')
-        self.fuck.random(name='Alice', from_='Bob', reference='Clara')
+        self.fuck.random(name_='Tom', from_='Chris')
+        self.fuck.random(name_='Alice', from_='Bob', company_='Acme')
+        self.fuck.random(name_='Alice', from_='Bob', reference_='Clara')
 
+    def test_method_exists(self):
+        with self.assertRaises(AttributeError):
+            self.fuck.test_method(from_="Chris")
+
+    def test_address(self):
+        fuckingResponse = FuckingResponse("http://www.example.comoperations")
+        with self.assertRaises(Exception):
+            fuckingResponse.make_request("text/plain")
 
 if __name__ == '__main__':
     unittest.main()
