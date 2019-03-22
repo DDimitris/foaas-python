@@ -14,6 +14,11 @@ A simple Python library to [FOAAS].
 Documentation
 -------------
 
+###Important Notes
+
+1)The default URL used is: [https://foaas.com/](https://foaas.com)
+2)Every argument used in every method that makes a request to the REST API, must be followed by an underscore (ex. name\_, from\_, company\_)
+
 ### Installation
 
 This package relies on [requests] and should be installed with [pip]:
@@ -28,7 +33,7 @@ Fuck off:
 
 ```
 >>> from foaas import fuck
->>> print fuck.off(name='Tom', from_='Chris').text
+>>> print fuck.off(name_='Tom', from_='Chris').text
 Fuck off, Tom. - Chris
 ```
 
@@ -43,19 +48,7 @@ Just get the fucking URL:
 
 ```
 >>> print fuck.everything(from_='Chris').url
-http://foaas.herokuapp.com/everything/Chris
-```
-
-This needs to be fucking secure:
-
-```
->>> from foaas import Fuck
->>> fuck = Fuck(secure=True)
->>> fucking = fuck.life(from_='Phil')
->>> print fucking.url
-https://foaas.herokuapp.com/life/Phil
->>> print fucking.text
-Fuck my life. - Phil
+https://foaas.com/everything/Chris
 ```
 
 Give me some random fucking things:
@@ -65,53 +58,30 @@ Give me some random fucking things:
 Fuck you very much. - Chris
 >>> print fuck.random(from_='Chris').text
 Fuck my life. - Chris
->>> print fuck.random(name='Tom', from_='Chris').text
+>>> print fuck.random(name_='Tom', from_='Chris').text
 Fuck me gently with a chainsaw, Tom. Do I look like Mother Teresa? - Chris
->>> print fuck.random(name='Tom', from_='Chris').text
+>>> print fuck.random(name_='Tom', from_='Chris').text
 Fuck off, Tom. - Chris
+
+```
+
+Set a custom fucking URL:
+
+```
+>>> from foaas import fuck
+>>> fuck.that(from_="Dimitris").url
+u'https://foaas.com/that/Dimitris'
+>>> fuck.setFuckingAddress("https://foaas.herokuapp.com/")
+>>> fuck.that(from_="Dimitris").url
+u'https://foaas.herokuapp.com/that/Dimitris'
+
 ```
 
 ### Supported Actions
 
- * `fuck.awesome(from_)`
- * `fuck.ballmer(name, company, from_)`
- * `fuck.because(from_)`
- * `fuck.bus(name, from_)`
- * `fuck.bye(from_)`
- * `fuck.caniuse(namer, from_)`
- * `fuck.chainsaw(name, from_)`
- * `fuck.cool(from_)`
- * `fuck.diabetes(from_)`
- * `fuck.donut(name, from_)`
- * `fuck.everyone(from_)`
- * `fuck.everything(from_)`
- * `fuck.fascinating(from_)`
- * `fuck.field(name, from_, reference)`
- * `fuck.flying(from_)`
- * `fuck.king(name, from_)`
- * `fuck.life(from_)`
- * `fuck.linus(name, from_)`
- * `fuck.madison(name, from_)`
- * `fuck.nugget(name, from_)`
- * `fuck.off(name, from_)`
- * `fuck.outside(name, from_)`
- * `fuck.pink(from_)`
- * `fuck.thanks(from_)`
- * `fuck.that(from_)`
- * `fuck.thing(thing, from_)`
- * `fuck.this(from_)`
- * `fuck.random(name, from_)`
- * `fuck.shakespeare(name, from_)`
- * `fuck.what(from_)`
- * `fuck.xmas(name, from_)`
- * `fuck.yoda(name, from_)`
- * `fuck.you(name, from_)`
-
-### tl;dr
-
-```
-foaas.Fuck([secure=True]).<action>(**kwargs)[.<url|html|text|json>]
-```
+All the supported actions are described in the  [https://foaas.com/](https://foaas.com) website.
+This package is able to be automatically up-to-date with every addition or removal of any action.
+ 
 
 Testing
 -------
@@ -120,7 +90,7 @@ Testing
 $ python tests.py
 .......
 ----------------------------------------------------------------------
-Ran 7 tests in 0.724s
+Ran 8 tests in 0.724s
 
 OK
 ```
