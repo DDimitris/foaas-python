@@ -106,7 +106,7 @@ class Fuck(object):
                 if all(x in string_of_names for x in url_split):
                     actions.append(url)
         return FuckingResponse(self.__build_url(random.choice(actions),
-                                              **kwargs))
+                                                **kwargs))
 
     def setFuckingAddress(self, address):
         self.GLOBAL_URL = address
