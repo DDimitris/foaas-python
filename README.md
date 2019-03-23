@@ -14,10 +14,10 @@ A simple Python library to [FOAAS].
 Documentation
 -------------
 
-###Important Notes
+### Important Notes
 
-1)The default URL used is: [https://foaas.com/](https://foaas.com)
-2)Every argument used in every method that makes a request to the REST API, must be followed by an underscore (ex. name\_, from\_, company\_)
+1) The default URL used is: [https://foaas.com/](https://foaas.com)
+2) Every argument used in every method that makes a request to the REST API, must be followed by an underscore (ex. name\_, from\_, company\_)
 
 ### Installation
 
@@ -87,9 +87,9 @@ Testing
 
 ```
 $ python tests.py
-.......
+...........
 ----------------------------------------------------------------------
-Ran 8 tests in 0.724s
+Ran 11 tests in 12.729s
 
 OK
 ```
