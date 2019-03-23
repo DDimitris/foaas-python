@@ -32,7 +32,8 @@ pip install foaas
 Fuck off:
 
 ```
->>> from foaas import fuck
+>>> import foaas
+>>> fuck = foass.Fuck()
 >>> print fuck.off(name_='Tom', from_='Chris').text
 Fuck off, Tom. - Chris
 ```
@@ -68,10 +69,8 @@ Fuck off, Tom. - Chris
 Set a custom fucking URL:
 
 ```
->>> from foaas import fuck
->>> fuck.that(from_="Dimitris").url
-u'https://foaas.com/that/Dimitris'
->>> fuck.setFuckingAddress("https://foaas.herokuapp.com/")
+>>> import foaas
+>>> fuck = foaas.Fuck(url="https://foaas.herokuapp.com/")
 >>> fuck.that(from_="Dimitris").url
 u'https://foaas.herokuapp.com/that/Dimitris'
 

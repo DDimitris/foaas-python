@@ -65,13 +65,14 @@ class Fuck(object):
 
     GLOBAL_URL = "https://foaas.com/"
 
-    def __init__(self):
+    def __init__(self, url=GLOBAL_URL):
         self.initialized = False
+        self.url = url
 
     def __getattr__(self, method_name):
         if not self.initialized:
             self.initialized = True
-            self.foperations = FuckingOperations(self.GLOBAL_URL)
+            self.foperations = FuckingOperations(self.url)
             for action, url in self.foperations.dict_of_actions_urls().items():
                 self.__add_meta_method(action, url)
             return getattr(self, method_name)
@@ -89,7 +90,7 @@ class Fuck(object):
 
     def __build_url(self, url, **kwargs):
         url_split = url.split('/')
-        final_url = self.GLOBAL_URL + url_split[1] + "/"
+        final_url = self.url + url_split[1] + "/"
         for i in range(2, len(url_split)):
             final_url += kwargs[url_split[i].replace(":", "") + "_"] + "/"
         return final_url[:-1]
@@ -107,8 +108,3 @@ class Fuck(object):
                     actions.append(url)
         return FuckingResponse(self.__build_url(random.choice(actions),
                                                 **kwargs))
-
-    def setFuckingAddress(self, address):
-        self.GLOBAL_URL = address
-
-fuck = Fuck()
