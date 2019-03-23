@@ -73,21 +73,21 @@ class Fuck(object):
             self.initialized = True
             self.foperations = FuckingOperations(self.GLOBAL_URL)
             for action, url in self.foperations.dict_of_actions_urls().items():
-                self.add_meta_method(action, url)
+                self.__add_meta_method(action, url)
             return getattr(self, method_name)
         else:
             raise AttributeError(
                 "The method you are trying to call does not exists!")
 
-    def add_meta_method(self, action, url):
+    def __add_meta_method(self, action, url):
 
         def method(self, **kwargs):
-            final_url = self.build_url(url, **kwargs)
+            final_url = self.__build_url(url, **kwargs)
             return FuckingResponse(final_url)
 
         setattr(Fuck, action, method)
 
-    def build_url(self, url, **kwargs):
+    def __build_url(self, url, **kwargs):
         url_split = url.split('/')
         final_url = self.GLOBAL_URL + url_split[1] + "/"
         for i in range(2, len(url_split)):
@@ -105,7 +105,7 @@ class Fuck(object):
             if len(kwargs.items()) == len(url_split):
                 if all(x in string_of_names for x in url_split):
                     actions.append(url)
-        return FuckingResponse(self.build_url(random.choice(actions),
+        return FuckingResponse(self.__build_url(random.choice(actions),
                                               **kwargs))
 
     def setFuckingAddress(self, address):
