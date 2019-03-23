@@ -73,13 +73,13 @@ class Fuck(object):
             self.initialized = True
             self.foperations = FuckingOperations(self.GLOBAL_URL)
             for action, url in self.foperations.dict_of_actions_urls().items():
-                self.add_meta_method(action, url)
+                self.__add_meta_method(action, url)
             return getattr(self, method_name)
         else:
             raise AttributeError(
                 "The method you are trying to call does not exists!")
 
-    def add_meta_method(self, action, url):
+    def __add_meta_method(self, action, url):
 
         def method(self, **kwargs):
             final_url = self.build_url(url, **kwargs)
