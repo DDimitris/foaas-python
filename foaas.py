@@ -52,7 +52,7 @@ class FuckingOperations(object):
         return urls
 
     def list_of_actions(self):
-        actions = list(map(lambda url: url.split('/')[1], list_of_urls()))
+        actions = list(map(lambda url: url.split('/')[1], self.list_of_urls()))
         return actions
 
     def dict_of_actions_urls(self):

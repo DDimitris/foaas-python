@@ -1,11 +1,14 @@
 import unittest
-from foaas import Fuck, FuckingResponse
+from foaas import Fuck, FuckingResponse, FuckingOperations
 
 GLOBAL_URL = "https://foaas.com/"
+WRONG_URL = "http://www.example.comoperations"
 
 class FuckingTests(unittest.TestCase):
     def setUp(self):
-        self.fuck = Fuck()
+        self.fuck = Fuck()	
+        self.fResponse = FuckingResponse(WRONG_URL)
+	self.fOperations = FuckingOperations(GLOBAL_URL)
 
     def test_url(self):
         url = self.fuck.off(name_='Alice', from_='Bob').url
@@ -42,9 +45,23 @@ class FuckingTests(unittest.TestCase):
             self.fuck.test_method(from_="Chris")
 
     def test_address(self):
-        fuckingResponse = FuckingResponse("http://www.example.comoperations")
         with self.assertRaises(Exception):
-            fuckingResponse.make_request("text/plain")
+            self.fResponse.make_request("text/plain")
+    
+    def test_list_of_urls(self):
+	lst = self.fOperations.list_of_urls()
+	self.assertIsInstance(lst, list)
+        self.assertTrue(lst)
+
+    def test_list_of_actions(self):
+	lst = self.fOperations.list_of_actions()	
+	self.assertIsInstance(lst, list)
+        self.assertTrue(lst)
+
+    def test_dict_of_actions_urls(self):
+	dictionary = self.fOperations.dict_of_actions_urls()
+	self.assertIsInstance(dictionary, dict)
+	self.assertTrue(dictionary)
 
 if __name__ == '__main__':
     unittest.main()
