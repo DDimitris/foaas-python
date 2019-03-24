@@ -75,6 +75,23 @@ Set a custom URL:
 u'https://foaas.herokuapp.com/that/Dimitris'
 
 ```
+Internationalization and localization support:
+
+```
+>>> import foaas
+>>> fuck = foaas.Fuck()
+>>> print(fuck.that(from_="Dimitris", i18n_="es").text)
+Joder que !!,., !! - Dimitris undefined
+
+```
+Shoutcloud support:
+
+```
+>>> import foaas
+>>> fuck = foaas.Fuck()
+>>> print(fuck.that(from_="Dimitris", shoutcloud_=True).text)
+FUCK THAT. - DIMITRIS
+```
 
 ### Supported Actions
 
@@ -87,9 +104,9 @@ Testing
 
 ```
 $ python tests.py
-...........
+...............
 ----------------------------------------------------------------------
-Ran 11 tests in 12.729s
+Ran 15 tests in 17.537s
 
 OK
 ```

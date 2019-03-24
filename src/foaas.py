@@ -60,7 +60,17 @@ class Fuck(object):
         final_url = self.url + url_split[1] + "/"
         for i in range(2, len(url_split)):
             final_url += kwargs[url_split[i].replace(":", "") + "_"] + "/"
-        return final_url[:-1]
+        final_url = final_url[:-1]
+        if all(keys in kwargs for keys in ('shoutcloud_', 'i18n_')):
+            if kwargs['shoutcloud_'] == True:
+                final_url += "?shoutcloud&i18n=" + kwargs['i18n_']
+            else:
+                final_url += "?i18n=" + kwargs['i18n_']
+        elif 'shoutcloud_' in kwargs:
+            final_url += "?shoutcloud" if kwargs['shoutcloud_'] == True else ""
+        elif 'i18n_' in kwargs:
+            final_url += "?i18n=" + kwargs['i18n_']
+        return final_url
 
     def random(self, **kwargs):
         actions = []
@@ -75,3 +85,4 @@ class Fuck(object):
                     actions.append(url)
         return FuckingResponse(self.__build_url(random.choice(actions),
                                                 **kwargs))
+
