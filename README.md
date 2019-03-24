@@ -7,8 +7,8 @@ A simple Python library to [FOAAS].
 [![Coverage Status](https://coveralls.io/repos/github/DDimitris/foaas-python/badge.svg?branch=master)](https://coveralls.io/github/DDimitris/foaas-python?branch=master)
 
 
-* **Author**: [Derek Payton]
-* **Version**: 0.2.0
+* **Author**: [Dimitris Dedousis]
+* **Version**: 1.0.0
 * **License**: [MIT]
 
 Documentation
@@ -38,21 +38,21 @@ Fuck off:
 Fuck off, Tom. - Chris
 ```
 
-Give me some fucking JSON:
+Print in JSON format:
 
 ```
 >>> fuck.that(from_='Chris').json
 {u'message': u'Fuck that.', u'subtitle': u'- Chris'}
 ```
 
-Just get the fucking URL:
+Print the URL:
 
 ```
 >>> print fuck.everything(from_='Chris').url
 https://foaas.com/everything/Chris
 ```
 
-Give me some random fucking things:
+Print random responses:
 
 ```
 >>> print fuck.random(from_='Chris').text
@@ -66,7 +66,7 @@ Fuck off, Tom. - Chris
 
 ```
 
-Set a custom fucking URL:
+Set a custom URL:
 
 ```
 >>> import foaas
@@ -101,8 +101,8 @@ $ tox
 ```
 
 [FOAAS]: http://foaas.com/
-[Derek Payton]: http://dmpayton.com
-[MIT]: https://github.com/dmpayton/foaas-python/blob/master/LICENSE
+[Dimitris Dedousis]: https://ddedousis.eu
+[MIT]: https://github.com/DDimitris/foaas-python/blob/master/LICENSE 
 [requests]: http://python-requests.org/
 [pip]: http://www.pip-installer.org/
 [tox]: https://tox.readthedocs.org/

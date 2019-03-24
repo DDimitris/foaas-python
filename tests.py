@@ -1,5 +1,6 @@
 import unittest
-from src.foaas import Fuck, FuckingResponse, FuckingOperations
+from src.foaas import Fuck, FuckingOperations
+from src.foaas_response import FuckingResponse
 
 GLOBAL_URL = "https://foaas.com/"
 WRONG_URL = "http://www.example.comoperations"

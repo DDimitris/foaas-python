@@ -1,43 +1,10 @@
 import random
-import requests
 import json
+from src.foaas_response import FuckingResponse
 
-__AUTHOR__ = 'Derek Payton <derek.payton@gmail.com>'
+__AUTHOR__ = 'Dimitris Dedousis <dimitris.dedousis@gmail.com>'
 __LICENSE__ = 'MIT'
-__VERSION__ = '0.2.0'
-
-
-class FuckingResponse(object):
-
-    def __init__(self, url):
-        self.url = url
-        self._html = None
-        self._json = None
-        self._text = None
-
-    def make_request(self, accept):
-        return requests.get(self.url, headers={
-            'Accept': accept,
-            'Accept-Language': 'en-us'
-        })
-
-    @property
-    def text(self):
-        if self._text is None:
-            self._text = self.make_request('text/plain')
-        return self._text.text
-
-    @property
-    def json(self):
-        if self._json is None:
-            self._json = self.make_request('application/json')
-        return self._json.json()
-
-    @property
-    def html(self):
-        if self._html is None:
-            self._html = self.make_request('text/html')
-        return self._html.text
+__VERSION__ = '1.0.0'
 
 
 class FuckingOperations(object):
