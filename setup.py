@@ -12,7 +12,7 @@ setup(
     url='https://github.com/DDimitris/foaas-python',
     author='Dimitris Dedousis',
     author_email='dimitris.dedousis@gmail.com',
-    py_modules=['foaas'],
+    packages=['foaas',],
     install_requires=['requests'],
     classifiers=(
         'Development Status :: 4 - Beta',

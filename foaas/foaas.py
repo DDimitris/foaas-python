@@ -1,6 +1,6 @@
 import random
 import json
-from src.foaas_response import FuckingResponse
+from .foaas_response import FuckingResponse
 
 __AUTHOR__ = 'Dimitris Dedousis <dimitris.dedousis@gmail.com>'
 __LICENSE__ = 'MIT'
