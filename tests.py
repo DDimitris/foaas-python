@@ -1,5 +1,5 @@
 import unittest
-from foaas.foaas import Fuck, FuckingOperations
+from foaas.foaas_client import Fuck, FuckingOperations
 from foaas.foaas_response import FuckingResponse
 
 GLOBAL_URL = "https://foaas.com/"
