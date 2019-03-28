@@ -80,6 +80,9 @@ class Fuck(object):
             string_of_names += key
         for url in urls_list:
             url_split = url.replace(":", "").split('/')[2:]
+            #TODO: Bug detected!! In case the user provide shoutcloud and i18n 
+            #This if statement will fail thus an exception will raise because of
+            #no available action.
             if len(kwargs.items()) == len(url_split):
                 if all(x in string_of_names for x in url_split):
                     actions.append(url)
