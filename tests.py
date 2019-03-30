@@ -68,24 +68,24 @@ class FuckingTests(unittest.TestCase):
 
     def test_shoutcloud(self):
         text = self.fuck.that(from_="Dimitris", shoutcloud_=True).text
-        self.assertEqual('FUCK THAT. - DIMITRIS', text)
+        self.assertEqual("FUCK THAT. - DIMITRIS", text)
 
     def test_i18n(self):
-        text = self.fuck.that(from_="Dimitris", i18n_="de").text
+        text = self.fuck.that(from_="Dimitris", lang_="de").text
         self.assertEqual(
-            'Fick das. !!,., !! - Dimitris   undefined', text)
+            "Fick das. !!,., !! - Dimitris   undefined", text)
 
     def test_both_with_shoutcloud_enabled(self):
         text = self.fuck.that(
-            from_="Dimitris", shoutcloud_=True, i18n_="de").text
+            from_="Dimitris", shoutcloud_=True, lang_="de").text
         self.assertEqual(
-            'FICK DAS. !!,., !! - DIMITRIS   UNDEFINED', text)
+            "FICK DAS. !!,., !! - DIMITRIS   UNDEFINED", text)
 
     def test_both_with_shoutcloud_disabled(self):
         text = self.fuck.that(
-            from_="Dimitris", shoutcloud_=False, i18n_="de").text
+            from_="Dimitris", shoutcloud_=False, lang_="de").text
         self.assertEqual(
-            'Fick das. !!,., !! - Dimitris   undefined', text)
+            "Fick das. !!,., !! - Dimitris   undefined", text)
 
 if __name__ == '__main__':
     unittest.main()
