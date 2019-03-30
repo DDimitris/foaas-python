@@ -1,5 +1,6 @@
 import random
 import json
+import copy
 from .foaas_response import FuckingResponse
 
 __AUTHOR__ = 'Dimitris Dedousis <dimitris.dedousis@gmail.com>'
@@ -61,31 +62,30 @@ class Fuck(object):
         for i in range(2, len(url_split)):
             final_url += kwargs[url_split[i].replace(":", "") + "_"] + "/"
         final_url = final_url[:-1]
-        if all(keys in kwargs for keys in ('shoutcloud_', 'i18n_')):
+        if all(keys in kwargs for keys in ('shoutcloud_', 'lang_')):
             if kwargs['shoutcloud_'] == True:
-                final_url += "?shoutcloud&i18n=" + kwargs['i18n_']
+                final_url += "?shoutcloud&i18n=" + kwargs['lang_']
             else:
-                final_url += "?i18n=" + kwargs['i18n_']
+                final_url += "?i18n=" + kwargs['lang_']
         elif 'shoutcloud_' in kwargs:
             final_url += "?shoutcloud" if kwargs['shoutcloud_'] == True else ""
-        elif 'i18n_' in kwargs:
-            final_url += "?i18n=" + kwargs['i18n_']
+        elif 'lang_' in kwargs:
+            final_url += "?i18n=" + kwargs['lang_']
         return final_url
 
     def random(self, **kwargs):
         actions = []
         urls_list = self.foperations.list_of_urls()
         string_of_names = ""
-        for key, value in kwargs.items():
+        tmpDict = copy.deepcopy(kwargs)
+        tmpDict.pop("shoutcloud_", None)
+        tmpDict.pop("lang_", None)
+        for key, value in tmpDict.items():
             string_of_names += key
         for url in urls_list:
             url_split = url.replace(":", "").split('/')[2:]
-            #TODO: Bug detected!! In case the user provide shoutcloud and i18n 
-            #This if statement will fail thus an exception will raise because of
-            #no available action.
-            if len(kwargs.items()) == len(url_split):
+            if len(tmpDict.items()) == len(url_split):
                 if all(x in string_of_names for x in url_split):
                     actions.append(url)
         return FuckingResponse(self.__build_url(random.choice(actions),
                                                 **kwargs))
-
