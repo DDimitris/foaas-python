@@ -32,8 +32,8 @@ pip install foaas
 Fuck off:
 
 ```
->>> import foaas
->>> fuck = foass.Fuck()
+>>> from foaas.foaas_client import Fuck
+>>> fuck = Fuck()
 >>> print fuck.off(name_='Tom', from_='Chris').text
 Fuck off, Tom. - Chris
 ```
@@ -69,8 +69,8 @@ Fuck off, Tom. - Chris
 Set a custom URL:
 
 ```
->>> import foaas
->>> fuck = foaas.Fuck(url="https://foaas.herokuapp.com/")
+>>> from foaas.foaas_client import Fuck
+>>> fuck = Fuck(url="https://foaas.herokuapp.com/")
 >>> fuck.that(from_="Dimitris").url
 u'https://foaas.herokuapp.com/that/Dimitris'
 
@@ -78,8 +78,8 @@ u'https://foaas.herokuapp.com/that/Dimitris'
 Internationalization and localization support:
 
 ```
->>> import foaas
->>> fuck = foaas.Fuck()
+>>> from foaas.foaas_client import Fuck
+>>> fuck = Fuck()
 >>> print(fuck.that(from_="Dimitris", i18n_="es").text)
 Joder que !!,., !! - Dimitris undefined
 
@@ -87,8 +87,8 @@ Joder que !!,., !! - Dimitris undefined
 Shoutcloud support:
 
 ```
->>> import foaas
->>> fuck = foaas.Fuck()
+>>> from foaas.foaas_client import Fuck
+>>> fuck = Fuck()
 >>> print(fuck.that(from_="Dimitris", shoutcloud_=True).text)
 FUCK THAT. - DIMITRIS
 ```
